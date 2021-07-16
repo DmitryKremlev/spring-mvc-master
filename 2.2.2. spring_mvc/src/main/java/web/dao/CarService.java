@@ -19,11 +19,15 @@ public class CarService {
         cars.add(new Car(5, "Renault", "France"));
     }
 
-    public List<Car> allCars() {
+    public List<Car> allCars(int id) {
+
+        if (id == 0) {
+            return cars;
+        }
+        if (id < 5) {
+            return cars.subList(0, id);
+        }
         return cars;
     }
 
-    public List<Car> subListCars(int id) {
-        return cars.subList(0, id);
-    }
 }

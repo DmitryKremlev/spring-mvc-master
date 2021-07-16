@@ -18,15 +18,8 @@ public class NewController {
 
     @GetMapping(value = "/cars")
     public String printWelcome(@RequestParam(value = "count", required = false, defaultValue = "0") int count, Model model) {
+        model.addAttribute("messages", carService.allCars(count));
 
-        if (count < 5) {
-            model.addAttribute("messages", carService.allCars().subList(0, count));
-        } else {
-            model.addAttribute("messages", carService.allCars());
-        }
-        if (count == 0) {
-            model.addAttribute("messages", carService.allCars());
-        }
         return "newindex";
     }
 
